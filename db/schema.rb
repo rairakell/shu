@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20180306113212) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "chapters", force: true do |t|
     t.string   "name"
     t.integer  "fiction_id"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20180306113212) do
     t.datetime "updated_at"
   end
 
-  add_index "chapters", ["fiction_id"], name: "index_chapters_on_fiction_id"
+  add_index "chapters", ["fiction_id"], name: "index_chapters_on_fiction_id", using: :btree
 
   create_table "characters", force: true do |t|
     t.integer  "fiction_id"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20180306113212) do
     t.datetime "updated_at"
   end
 
-  add_index "characters", ["fiction_id"], name: "index_characters_on_fiction_id"
+  add_index "characters", ["fiction_id"], name: "index_characters_on_fiction_id", using: :btree
 
   create_table "fictions", force: true do |t|
     t.string   "name"
@@ -46,8 +49,8 @@ ActiveRecord::Schema.define(version: 20180306113212) do
     t.datetime "updated_at"
   end
 
-  add_index "image_links", ["fiction_id"], name: "index_image_links_on_fiction_id"
-  add_index "image_links", ["image_id"], name: "index_image_links_on_image_id"
+  add_index "image_links", ["fiction_id"], name: "index_image_links_on_fiction_id", using: :btree
+  add_index "image_links", ["image_id"], name: "index_image_links_on_image_id", using: :btree
 
   create_table "image_series", force: true do |t|
     t.string   "name"
@@ -62,8 +65,8 @@ ActiveRecord::Schema.define(version: 20180306113212) do
     t.datetime "updated_at"
   end
 
-  add_index "image_tag_series", ["image_serie_id"], name: "index_image_tag_series_on_image_serie_id"
-  add_index "image_tag_series", ["image_tag_id"], name: "index_image_tag_series_on_image_tag_id"
+  add_index "image_tag_series", ["image_serie_id"], name: "index_image_tag_series_on_image_serie_id", using: :btree
+  add_index "image_tag_series", ["image_tag_id"], name: "index_image_tag_series_on_image_tag_id", using: :btree
 
   create_table "image_tags", force: true do |t|
     t.string   "name"
@@ -78,6 +81,6 @@ ActiveRecord::Schema.define(version: 20180306113212) do
     t.datetime "updated_at"
   end
 
-  add_index "images", ["image_serie_id"], name: "index_images_on_image_serie_id"
+  add_index "images", ["image_serie_id"], name: "index_images_on_image_serie_id", using: :btree
 
 end
