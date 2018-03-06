@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :image_links
+
   resources :image_tag_series
 
   resources :image_tags

@@ -1,0 +1,27 @@
+<h1>Listing image_links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Fiction</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image_links.each do |image_link| %>
+      <tr>
+        <td><%= image_link.image %></td>
+        <td><%= image_link.fiction %></td>
+        <td><%= link_to 'Show', image_link %></td>
+        <td><%= link_to 'Edit', edit_image_link_path(image_link) %></td>
+        <td><%= link_to 'Destroy', image_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image link', new_image_link_path %>
