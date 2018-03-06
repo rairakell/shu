@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image tag:</strong>
+  <%= @image_tag_series.image_tag %>
+</p>
+
+<p>
+  <strong>Image serie:</strong>
+  <%= @image_tag_series.image_serie %>
+</p>
+
+<%= link_to 'Edit', edit_image_tag_series_path(@image_tag_series) %> |
+<%= link_to 'Back', image_tag_series_path %>

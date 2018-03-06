@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  resources :image_tag_series
+
+  resources :image_tags
+
+  resources :images
+
+  resources :image_series
+
+  resources :characters
+
+  resources :chapters
+
   resources :fictions
 
   # The priority is based upon order of creation: first created -> highest priority.

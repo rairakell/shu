@@ -1,0 +1,27 @@
+<h1>Listing image_tag_series</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image tag</th>
+      <th>Image serie</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image_tag_series.each do |image_tag_series| %>
+      <tr>
+        <td><%= image_tag_series.image_tag %></td>
+        <td><%= image_tag_series.image_serie %></td>
+        <td><%= link_to 'Show', image_tag_series %></td>
+        <td><%= link_to 'Edit', edit_image_tag_series_path(image_tag_series) %></td>
+        <td><%= link_to 'Destroy', image_tag_series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image tag serie', new_image_tag_series_path %>

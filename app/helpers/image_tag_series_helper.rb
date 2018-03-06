@@ -1,0 +1,2 @@
+module ImageTagSeriesHelper
+end

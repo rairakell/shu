@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fiction_id: 
+  name: MyString
+  replace: MyString
+
+two:
+  fiction_id: 
+  name: MyString
+  replace: MyString
