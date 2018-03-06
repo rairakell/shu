@@ -1,4 +1,5 @@
 class ChaptersController < ApplicationController
+  before_action :set_fiction, only: [:index, :new, :create]
   before_action :set_chapter, only: [:show, :edit, :update, :destroy]
 
   # GET /chapters
@@ -14,7 +15,7 @@ class ChaptersController < ApplicationController
 
   # GET /chapters/new
   def new
-    @chapter = Chapter.new
+    @chapter = @fiction.chapters.build
   end
 
   # GET /chapters/1/edit
@@ -24,7 +25,7 @@ class ChaptersController < ApplicationController
   # POST /chapters
   # POST /chapters.json
   def create
-    @chapter = Chapter.new(chapter_params)
+    @chapter = @fiction.chapters.build(chapter_params)
 
     respond_to do |format|
       if @chapter.save
@@ -67,8 +68,12 @@ class ChaptersController < ApplicationController
       @chapter = Chapter.find(params[:id])
     end
 
+    def set_fiction
+      @fiction = Fiction.find(params[:fiction_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
-      params.require(:chapter).permit(:name, :fiction_id, :content)
+      params.require(:chapter).permit(:name, :content)
     end
 end

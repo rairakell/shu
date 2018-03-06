@@ -1,9 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
   <%= @fiction.name %>
 </p>
 
+<% @fiction.chapters.each do |chatper| %>
+	<%= link_to chatper.name, chapter_path(chatper) %>
+<% end %>
+
+<br>
+<%= link_to 'New chatper', new_fiction_chapter_path(@fiction) %>
+<br>
 <%= link_to 'Edit', edit_fiction_path(@fiction) %> |
 <%= link_to 'Back', fictions_path %>

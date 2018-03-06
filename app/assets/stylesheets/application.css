@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+pre {
+	white-space: pre-wrap;
+	/*overflow-y: scroll;*/
+}
+
+body {
+	max-width: 750px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #eee;
+}

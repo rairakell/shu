@@ -1,19 +1,83 @@
-<p id="notice"><%= notice %></p>
+<div class="wrapper">
+	<div class="chapter-header">
+		<span class="replace">H</span>
+		<span class="image-toggle">图</span>
+	</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @chapter.name %>
-</p>
+	<div class="replace-header" style="display: none;">
+		<div>
+			Find: <input class='replace-origin' type='text'>
+		</div>
+		<div>
+			Replace: <input class='replace-new' type='text'>
+		</div>
+		<div>
+			<button class="do-replace">Yes</button>
+		</div>
+	</div>
 
-<p>
-  <strong>Fiction:</strong>
-  <%= @chapter.fiction %>
-</p>
+	<div class="container">
+		<div class="chapter-content">
+			<p>
+			  <%= @chapter.name %>
+			</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @chapter.content %>
-</p>
+			<pre>
+			  <%= @chapter.content %>
+			</pre>
 
-<%= link_to 'Edit', edit_chapter_path(@chapter) %> |
-<%= link_to 'Back', chapters_path %>
+			<%= link_to 'Edit', edit_chapter_path(@chapter) %> |
+			<%= link_to 'Back', fiction_path(@chapter.fiction) %>
+		</div>
+
+		<div class="chapter-images" style="display: none;">
+			<img  src="http://mpic.tiankong.com/274/075/27407502a0abb91dae460b4aa041c6dc/640.jpg@670w" >
+			<img  src="http://mpic.tiankong.com/f60/14b/f6014b9b2e211e58086ce3149c0a03ed/640.jpg@450h" >
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var $content = $(".chapter-content");
+	var $images = $(".chapter-images");
+	var $replacer = $(".replace-header")
+	var image_show = false;
+
+	$(".image-toggle").click(function(event) {
+		// $content.toggle();
+		$images.toggle();
+		image_show = !image_show
+
+		if (image_show) {
+			$("body").css("overflow-y", "hidden");
+		} else {
+			$("body").css("overflow-y", "scroll");
+		}
+	});
+
+	$(".replace").click(function(event) {
+		$replacer.show();
+	});
+
+	var is_running = false
+	$(".do-replace").click(function(event) {
+		console.log("replace ........")
+
+		if (is_running) {
+			return;
+		}
+
+		is_running = true;
+
+		var origin = $("input.replace-origin").val();
+		var n = $("input.replace-new").val();
+
+		var content = $content.html()
+		var reg = new RegExp(origin, "g")
+		
+		var new_content = content.replace(reg, n)
+		$content.html(new_content);
+
+		$(".replace-header").hide();
+	})
+</script>
